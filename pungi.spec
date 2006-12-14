@@ -1,8 +1,8 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        0.1.1
-Release:        2%{?dist}
+Version:        0.1.2
+Release:        1%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -46,6 +46,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 13 2006 Jesse Keating <jkeating@redhat.com> - 0.1.2-1
+- Fix a bug in DVD repodata
+- Add correct ppc boot args
+- Set ppc arch correctly
+
 * Mon Dec 11 2006 Jesse Keating <jkeating@redhat.com> - 0.1.1-2
 - Need BR python-devel in rawhide
 
