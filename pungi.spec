@@ -46,7 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Tue Jan 16 2006 Jesse Keating <jkeating@redhat.com> - 0.1.2-2
+* Tue Jan 16 2007 Jesse Keating <jkeating@redhat.com> - 0.1.2-2
 - Require the new yum (now that it landed in updates)
 
 * Wed Dec 13 2006 Jesse Keating <jkeating@redhat.com> - 0.1.2-1
