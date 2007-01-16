@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        0.1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -10,7 +10,7 @@ License:        GPL
 URL:            http://hosted.fedoraproject.org/projects/pungi
 Source0:        http://linux.duke.edu/projects/%{name}/release/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires:       anaconda-runtime
+Requires:       anaconda-runtime, yum >= 3.0.3
 BuildRequires:  python-devel
 
 BuildArch:      noarch
@@ -46,6 +46,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jan 16 2006 Jesse Keating <jkeating@redhat.com> - 0.1.2-2
+- Require the new yum (now that it landed in updates)
+
 * Wed Dec 13 2006 Jesse Keating <jkeating@redhat.com> - 0.1.2-1
 - Fix a bug in DVD repodata
 - Add correct ppc boot args
