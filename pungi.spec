@@ -2,13 +2,14 @@
 
 Name:           pungi
 Version:        0.1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
 License:        GPL
 URL:            http://hosted.fedoraproject.org/projects/pungi
 Source0:        http://linux.duke.edu/projects/%{name}/release/%{name}-%{version}.tar.gz
+Patch0:         pungi-sha1order.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       anaconda-runtime, yum >= 3.0.3
 BuildRequires:  python-devel
@@ -21,6 +22,7 @@ A tool to create anaconda based installation trees/isos of a set of rpms.
 
 %prep
 %setup -q
+%patch0
 
 
 %build
@@ -46,6 +48,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Mar 12 2007 Jesse Keating <jkeating@redhat.com> - 0.1.2-3
+- Add a patch to fix the sha1 ordering
+
 * Tue Jan 16 2007 Jesse Keating <jkeating@redhat.com> - 0.1.2-2
 - Require the new yum (now that it landed in updates)
 
