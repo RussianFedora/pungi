@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        0.3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -46,7 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Mon May 21 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.2-1
+* Mon May 21 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.2-2
 - Don't quote ISO label, not running mkisofs in shell
 - Apply sparc patches (spot)
 - Fix cached downloads comparing correctly
