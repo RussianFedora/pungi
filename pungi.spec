@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        0.3.5
+Version:        0.3.7
 Release:        1%{?dist}
 Summary:        Distribution compose tool
 
@@ -46,6 +46,15 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed May 30 2007 Jesse Keating <jkeating@redhat.com> - 0.3.7-1
+- Handle the cdsize variable correctly
+- More fixes for cached download stuff
+- Fix default CD size storing
+- Update comps file with what shipped for F7
+
+* Fri May 25 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.6-1
+- Handle the cdsize variable correctly
+
 * Thu May 24 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.5-1
 - Use the right flavor in the Everything configs
 
