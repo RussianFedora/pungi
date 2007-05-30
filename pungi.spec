@@ -1,8 +1,8 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        0.3.2
-Release:        2%{?dist}
+Version:        0.3.7
+Release:        1%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -46,7 +46,26 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Mon May 21 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.2-2
+* Wed May 30 2007 Jesse Keating <jkeating@redhat.com> - 0.3.7-1
+- Handle the cdsize variable correctly
+- More fixes for cached download stuff
+- Fix default CD size storing
+- Update comps file with what shipped for F7
+
+* Fri May 25 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.6-1
+- Handle the cdsize variable correctly
+
+* Thu May 24 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.5-1
+- Use the right flavor in the Everything configs
+
+* Thu May 24 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.4-1
+- Use a package checksum to verify cached download
+
+* Wed May 23 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.3-1
+- Commit config files used for producing Fedora 7
+- Default pungi.conf file to using Fedora 7 stuff
+
+* Mon May 21 2007 Jesse Keating <jkeating@redhat.coM> - 0.3.2-1
 - Don't quote ISO label, not running mkisofs in shell
 - Apply sparc patches (spot)
 - Fix cached downloads comparing correctly
