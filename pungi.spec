@@ -2,13 +2,14 @@
 
 Name:           pungi
 Version:        0.3.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
 License:        GPL
 URL:            http://hosted.fedoraproject.org/projects/pungi
 Source0:        http://linux.duke.edu/projects/%{name}/release/%{name}-%{version}.tar.gz
+Patch0:         pungi-dupedeps.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       anaconda-runtime, yum => 3.0.3
 BuildRequires:  python-devel
@@ -21,6 +22,7 @@ A tool to create anaconda based installation trees/isos of a set of rpms.
 
 %prep
 %setup -q
+%patch0 -p1
 
 
 %build
@@ -46,6 +48,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jun 20 2007 Jesse Keating <jkeating@redhat.com> - 0.3.7-2
+- Fix a bug where new and old copies of a package were being included
+
 * Wed May 30 2007 Jesse Keating <jkeating@redhat.com> - 0.3.7-1
 - Handle the cdsize variable correctly
 - More fixes for cached download stuff
