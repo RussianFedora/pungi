@@ -2,11 +2,11 @@
 
 Name:           pungi
 Version:        1.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
-License:        GPL
+License:        GPLv2
 URL:            http://hosted.fedoraproject.org/projects/pungi
 Source0:        http://linux.duke.edu/projects/%{name}/release/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -48,7 +48,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Mon Aug 27 2007 Jesse Keating <jkeating@redhat.com>
+* Mon Aug 27 2007 Jesse Keating <jkeating@redhat.com> - 1.0.0-2
+- Fix the licensing tag.
+
+* Mon Aug 27 2007 Jesse Keating <jkeating@redhat.com> - 1.0.0-1
 - Add support for $releasever in repo uris.
 - Add a kickstart file usable for composing Fedora 8 "Fedora"
 - Fix bugs with $basearch and mirrorlist usage.
