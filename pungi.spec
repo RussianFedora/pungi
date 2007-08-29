@@ -1,8 +1,8 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        1.0.0
-Release:        2%{?dist}
+Version:        1.0.1
+Release:        1%{?dist}.1
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -48,6 +48,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Aug 28 2007 Jesse Keating <jkeating@redhat.com> - 1.0.1-1
+- Default flavor to blank.
+
 * Mon Aug 27 2007 Jesse Keating <jkeating@redhat.com> - 1.0.0-2
 - Fix the licensing tag.
 
