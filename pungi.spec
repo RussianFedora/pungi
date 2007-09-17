@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        1.0.2
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        Distribution compose tool
 
@@ -10,7 +10,7 @@ License:        GPLv2
 URL:            http://hosted.fedoraproject.org/projects/pungi
 Source0:        http://linux.duke.edu/projects/%{name}/release/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires:       anaconda-runtime, yum => 3.0.3
+Requires:       anaconda-runtime, yum => 3.0.3, repoview
 BuildRequires:  python-devel
 
 BuildArch:      noarch
@@ -31,6 +31,8 @@ A tool to create anaconda based installation trees/isos of a set of rpms.
 rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
 %{__install} -d $RPM_BUILD_ROOT/var/cache/pungi
+%{__install} -d $RPM_BUILD_ROOT/%{_mandir}/man8
+%{__install} doc/pungi.8 $RPM_BUILD_ROOT/%{_mandir}/man8/
 
  
 %clean
@@ -39,15 +41,28 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc Authors Changelog COPYING GPL README ToDo
+%doc Authors Changelog COPYING GPL ToDo doc/README
 # For noarch packages: sitelib
 %{python_sitelib}/pypungi
 %{_bindir}/pungi
 %{_datadir}/pungi
+%{_mandir}/man8/pungi.8.gz
 /var/cache/pungi
 
 
 %changelog
+* Fri Sep 14 2007 Jesse Keating <jkeating@redhat.com> - 1.1.0-1
+- Create repoview content in the tree
+- Move the .composeinfo file into the directory we actually publish
+- Remove python2.5 needs (Mark McLoughlin)
+- Consolidate the download code for easier maint. (Mark McLoughlin)
+- Create a config class that can make using pungi modules easier. (Mark 
+McLoughlin)
+- Use url line in kickstart files as a repo
+- Fix a bug with default dest dir (notting)
+- Include a man page (dcantrell)
+- Fix a bug with file:// based repos
+
 * Thu Aug 30 2007 Jesse Keating <jkeating@redhat.com> - 1.0.2-1
 - Fix some bugs with source iso creation
 - Add source repo to kickstart file
