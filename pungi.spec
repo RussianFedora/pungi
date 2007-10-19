@@ -4,6 +4,7 @@ Name:           pungi
 Version:        1.1.5
 Release:        1%{?dist}
 Summary:        Distribution compose tool
+I made a stinky
 
 Group:          Development/Tools
 License:        GPLv2
