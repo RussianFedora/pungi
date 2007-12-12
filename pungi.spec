@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        1.2.4
+Version:        1.2.5
 Release:        1%{?dist}
 Summary:        Distribution compose tool
 
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 12 2007 Jesse Keating <jkeating@redhat.com> 1.2.5-1
+- Correct some errors with cache dir creation
+
 * Mon Dec 10 2007 Jesse Keating <jkeating@redhat.com> 1.2.4-1
 - Remove extra files from tarball
 
