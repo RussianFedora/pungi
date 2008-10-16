@@ -1,0 +1,68 @@
+From 8a3b4e7fa1c02e9ac88678eb31721451672fc022 Mon Sep 17 00:00:00 2001
+From: Dennis Gilmore <dennis@ausil.us>
+Date: Wed, 15 Oct 2008 20:32:12 -0500
+Subject: [PATCH] add handling of sparc arch. make sure all the packages end up in the tree
+
+---
+ src/pypungi/pungi.py |   21 ++++++++++++++++++---
+ 1 files changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/src/pypungi/pungi.py b/src/pypungi/pungi.py
+index 1b22418..452140a 100755
+--- a/src/pypungi/pungi.py
++++ b/src/pypungi/pungi.py
+@@ -173,13 +173,18 @@ class Pungi(pypungi.PungiBase):
+     def doPackageorder(self):
+         """Run anaconda-runtime's pkgorder on the tree, used for splitting media."""
+ 
++        if self.config.get('default', 'arch') == "sparc":
++            treearch = "sparcv9v"
++        else:
++            treearch = self.config.get('default', 'arch')
++        self.logger.info("Setting treearch to %s" % treearch)
+ 
+         pkgorderfile = open(os.path.join(self.workdir, 'pkgorder-%s' % self.config.get('default', 'arch')), 'w')
+         # setup the command
+         pkgorder = ['/usr/lib/anaconda-runtime/pkgorder']
+         #pkgorder.append('TMPDIR=%s' % self.workdir)
+         pkgorder.append(self.topdir)
+-        pkgorder.append(self.config.get('default', 'arch'))
++        pkgorder.append(treearch)
+         pkgorder.append(self.config.get('default', 'product_path'))
+ 
+         # run the command
+@@ -249,9 +254,14 @@ class Pungi(pypungi.PungiBase):
+         """Use anaconda-runtime's splittree to split the tree into appropriate
+            sized chunks."""
+ 
++        if self.config.get('default', 'arch') == "sparc":
++            treearch = "sparcv9v"
++        else:
++            treearch = self.config.get('default', 'arch') 
++        self.logger.info("Setting treearch to %s" % treearch)
+ 
+         timber = splittree.Timber()
+-        timber.arch = self.config.get('default', 'arch')
++        timber.arch = treearch
+         timber.target_size = self.config.getfloat('default', 'cdsize') * 1024 * 1024
+         timber.total_discs = self.config.getint('default', 'discs')
+         timber.bin_discs = self.config.getint('default', 'discs')
+@@ -274,9 +284,14 @@ class Pungi(pypungi.PungiBase):
+         """Use anaconda-runtime's splittree to split the srpms into appropriate
+            sized chunks."""
+ 
++        if self.config.get('default', 'arch') == "sparc":
++            treearch = "sparcv9v"
++        else:
++            treearch = self.config.get('default', 'arch')
++        self.logger.info("Setting treearch to %s" % treearch)
+ 
+         timber = splittree.Timber()
+-        timber.arch = self.config.get('default', 'arch')
++        timber.arch = treearch
+         #timber.total_discs = self.config.getint('default', 'discs')
+         #timber.bin_discs = self.config.getint('default', 'discs')
+         timber.src_discs = self.config.getint('default', 'discs')
+-- 
+1.6.0.1
+

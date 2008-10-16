@@ -2,13 +2,14 @@
 
 Name:           pungi
 Version:        1.2.18.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
 License:        GPLv2
 URL:            https://fedorahosted.org/pungi
 Source0:        https://fedorahosted.org/pungi/attachment/wiki/%{version}/%{name}-%{version}.tar.bz2
+Patch0:         0001-add-handling-of-sparc-arch.-make-sure-all-the-packag.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       anaconda-runtime >= 11.4.0.67, yum => 3.2.13, repoview, createrepo >= 0.4.11, pykickstart => 1.36
 BuildRequires:  python-devel
@@ -21,7 +22,7 @@ A tool to create anaconda based installation trees/isos of a set of rpms.
 
 %prep
 %setup -q
-
+%patch -p1
 
 %build
 %{__python} setup.py build
@@ -55,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Oct 15 2008 Dennis Gilmore <dennis@ausil.us> - 1.2.18.1-2
+- add patch to get sparc right
+
 * Mon Jun 16 2008 Jesse Keating <jkeating@redhat.com> - 1.2.18.1-1
 - Fix for pykickstart moving from 'priority' to 'cost'.
 
