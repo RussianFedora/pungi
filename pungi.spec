@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        2.0.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -56,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Nov 29 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 2.0.8-2
+- Rebuild for Python 2.6
+
 * Tue Nov 4 2008 Jesse Keating <jkeating@redhat.com> - 2.0.8-1
 - Set default disc size to 695
 
