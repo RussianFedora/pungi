@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        2.0.8
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -46,7 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 # For noarch packages: sitelib
 %{python_sitelib}/pypungi
 %if 0%{?fedora} >= 9
-  %{python_sitelib}/%{name}-%{version}-py2.5.egg-info
+  %{python_sitelib}/%{name}-%{version}-py?.?.egg-info
 %endif
 %{_bindir}/pungi
 %{_bindir}/pkgorder
@@ -56,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Nov 30 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 2.0.8-3
+- Fix locations for Python 2.6
+
 * Sat Nov 29 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 2.0.8-2
 - Rebuild for Python 2.6
 
