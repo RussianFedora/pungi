@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        2.0.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -56,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Feb 23 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Wed Feb 11 2009 Jesse Keating <jkeating@redhat.com> - 2.0.10-1
 - Fix CD1 overflow issue
 - Name the checksum file after the isos being generated.
