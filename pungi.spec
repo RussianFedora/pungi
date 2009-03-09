@@ -1,8 +1,8 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        2.0.10
-Release:        2%{?dist}
+Version:        2.0.11
+Release:        1%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -56,8 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Mon Feb 23 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.10-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+* Mon Mar 09 2009 Jesse Keating <jkeating@redhat.com> - 2.0.11-1
+- Fix size estimation in splittree
+- Disable arch test in splittree for now
 
 * Wed Feb 11 2009 Jesse Keating <jkeating@redhat.com> - 2.0.10-1
 - Fix CD1 overflow issue
