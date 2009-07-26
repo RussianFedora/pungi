@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        2.0.16
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -56,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.16-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Thu May 21 2009 Jesse Keating <jkeating@redhat.com> - 2.0.16-1
 - Fix boot.iso being on DVD images
 
