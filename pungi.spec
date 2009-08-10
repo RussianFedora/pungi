@@ -1,8 +1,8 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        2.0.16
-Release:        2%{?dist}
+Version:        2.0.17
+Release:        1%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -56,8 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.16-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+* Mon Aug 10 2009 Jesse Keating <jkeating@redhat.com> - 2.0.17-1
+- Fix pkgorder to not conflict with yum internals.
+- Remove dead code from splittree
 
 * Thu May 21 2009 Jesse Keating <jkeating@redhat.com> - 2.0.16-1
 - Fix boot.iso being on DVD images
