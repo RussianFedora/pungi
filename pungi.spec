@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        2.0.17
+Version:        2.0.18
 Release:        1%{?dist}
 Summary:        Distribution compose tool
 
@@ -45,7 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc Authors Changelog COPYING GPL ToDo doc/README
 # For noarch packages: sitelib
 %{python_sitelib}/pypungi
-%if 0%{?fedora} >= 9
+%if 0%{?fedora} >= 9 || 0%{?rhel} >= 6
   %{python_sitelib}/%{name}-%{version}-py?.?.egg-info
 %endif
 %{_bindir}/pungi
@@ -56,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 14 2009 Jesse Keating <jkeating@redhat.com> - 2.0.18-1
+- Search for dracut for pkgorder
+
 * Mon Aug 10 2009 Jesse Keating <jkeating@redhat.com> - 2.0.17-1
 - Fix pkgorder to not conflict with yum internals.
 - Remove dead code from splittree
