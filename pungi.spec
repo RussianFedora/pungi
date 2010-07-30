@@ -16,7 +16,7 @@ BuildRequires:  python-devel
 BuildArch:      noarch
 
 %description
-A tool to create anaconda based installation trees/isos of a set of rpms.
+A tool to create anaconda based installation trees/isos of a set of rpms. 
 
 
 %prep
