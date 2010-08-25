@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        2.0.21
+Version:        2.0.22
 Release:        1%{?dist}
 Summary:        Distribution compose tool
 
@@ -56,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Aug 24 2010 Jesse Keating <jkeating@redhat.com> - 2.0.22-1
+- Backport a yum traceback
+
 * Wed Apr 14 2010 Jesse Keating <jkeating@redhat.com> - 2.0.21-1
 - Grab all kernels
 - Note the type of checksum we use
