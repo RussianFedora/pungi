@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        2.0.20
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -11,7 +11,7 @@ URL:            https://fedorahosted.org/pungi
 Source0:        https://fedorahosted.org/pungi/attachment/wiki/%{version}/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       anaconda-runtime >= 11.4.1.5, yum => 3.2.19, repoview, createrepo >= 0.4.11
-BuildRequires:  python-devel
+BuildRequires:  python-devel, fedora-packager
 
 BuildArch:      noarch
 
@@ -56,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Sep 18 2010 Jesse Keating <jkeating@redhat.com> - 2.0.20-2
+- Add a new build requires
+
 * Tue Sep 15 2009 Jesse Keating <jkeating@redhat.com> - 2.0.20-1
 - One more upstream pkgorder fix
 
