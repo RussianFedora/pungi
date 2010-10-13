@@ -1,8 +1,8 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        2.1.2
-Release:        2%{?dist}
+Version:        2.1.3
+Release:        1%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -16,7 +16,7 @@ BuildRequires:  python-devel
 BuildArch:      noarch
 
 %description
-A tool to create anaconda based installation trees/isos of a set of rpms. 
+A tool to create anaconda based installation trees/isos of a set of rpms.
 
 
 %prep
@@ -56,8 +56,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Wed Jul 21 2010 David Malcolm <dmalcolm@redhat.com> - 2.1.2-2
-- Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
+* Wed Oct 13 2010 Jesse Keating <jkeating@redhat.com> - 2.1.3-1
+- Fix a pkgorder issue
 
 * Tue Jun 29 2010 Jesse Keating <jkeating@redhat.com> - 2.1.2-1
 - Fix a yumconf traceback (thanks James!)
