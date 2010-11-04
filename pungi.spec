@@ -1,8 +1,8 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        2.0.20
-Release:        2%{?dist}
+Version:        2.0.20.1
+Release:        1%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -11,7 +11,7 @@ URL:            https://fedorahosted.org/pungi
 Source0:        https://fedorahosted.org/pungi/attachment/wiki/%{version}/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       anaconda-runtime >= 11.4.1.5, yum => 3.2.19, repoview, createrepo >= 0.4.11
-BuildRequires:  python-devel, fedora-packager
+BuildRequires:  python-devel
 
 BuildArch:      noarch
 
@@ -56,8 +56,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Sat Sep 18 2010 Jesse Keating <jkeating@redhat.com> - 2.0.20-2
-- Add a new build requires
+* Thu Nov 04 2010 Jesse Keating <jkeating@redhat.com> - 2.0.20.1-1
+- Fix traceback (#634741)
 
 * Tue Sep 15 2009 Jesse Keating <jkeating@redhat.com> - 2.0.20-1
 - One more upstream pkgorder fix
