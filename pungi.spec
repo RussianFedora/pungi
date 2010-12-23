@@ -2,13 +2,14 @@
 
 Name:           pungi
 Version:        2.0.21
-Release:        1%{?dist}
+Release:        1%{?dist}.1
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
 License:        GPLv2
 URL:            https://fedorahosted.org/pungi
 Source0:        https://fedorahosted.org/pungi/attachment/wiki/%{version}/%{name}-%{version}.tar.bz2
+Patch0:		pungi-39326ef54ad21a3775d19df32b2bcea9b4bc9494.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       anaconda-runtime >= 11.4.1.5, yum => 3.2.19, repoview, createrepo >= 0.4.11
 BuildRequires:  python-devel
@@ -21,6 +22,7 @@ A tool to create anaconda based installation trees/isos of a set of rpms.
 
 %prep
 %setup -q
+%patch0 -p1
 
 
 %build
@@ -56,6 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Aug 19 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 2.0.21-1.1
+- Fix a traceback (rh#609247)
+
 * Wed Apr 14 2010 Jesse Keating <jkeating@redhat.com> - 2.0.21-1
 - Grab all kernels
 - Note the type of checksum we use
