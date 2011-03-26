@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        2.4
+Version:        2.0.21
 Release:        1%{?dist}
 Summary:        Distribution compose tool
 
@@ -10,7 +10,7 @@ License:        GPLv2
 URL:            https://fedorahosted.org/pungi
 Source0:        https://fedorahosted.org/pungi/attachment/wiki/%{version}/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires:       anaconda >= 14.3, yum => 3.2.19, repoview, createrepo >= 0.4.11
+Requires:       anaconda-runtime >= 11.4.1.5, yum => 3.2.19, repoview, createrepo >= 0.4.11
 BuildRequires:  python-devel
 
 BuildArch:      noarch
@@ -49,37 +49,16 @@ rm -rf $RPM_BUILD_ROOT
   %{python_sitelib}/%{name}-%{version}-py?.?.egg-info
 %endif
 %{_bindir}/pungi
+%{_bindir}/pkgorder
 %{_datadir}/pungi
 %{_mandir}/man8/pungi.8.gz
 /var/cache/pungi
 
 
 %changelog
-* Tue Dec 21 2010 Jesse Keating <jkeating@redhat.com> - 2.4-1
-- Enable EFI booting on x86_64 media
-
-* Mon Nov 15 2010 Jesse Keating <jkeating@redhat.com> - 2.3-1
-- Drop split-media support
-
-* Thu Oct 14 2010 Jesse Keating <jkeating@redhat.com> - 2.1.4-1
-- Further fix the pkgorder issue
-
-* Wed Oct 13 2010 Jesse Keating <jkeating@redhat.com> - 2.1.3-1
-- Fix a pkgorder issue
-
-* Tue Jun 29 2010 Jesse Keating <jkeating@redhat.com> - 2.1.2-1
-- Fix a yumconf traceback (thanks James!)
-
-* Fri Jun 04 2010 Jesse Keating <jkeating@redhat.com> - 2.1.1-1
-- Don't do multilib gathering.
-- fixes --force when compose fails during split-tree process. (npetrov)
-- fix pkgorder (npetrov)
-
-* Wed Apr 14 2010 Jesse Keating <jkeating@redhat.com> - 2.1.0-1
-- Update paths for new anaconda layout
-- Drop hints about checksum type
-- Add proxy support from the repo line in the kickstart file
-- Catch all kernel packages
+* Wed Apr 14 2010 Jesse Keating <jkeating@redhat.com> - 2.0.21-1
+- Grab all kernels
+- Note the type of checksum we use
 
 * Tue Sep 15 2009 Jesse Keating <jkeating@redhat.com> - 2.0.20-1
 - One more upstream pkgorder fix
