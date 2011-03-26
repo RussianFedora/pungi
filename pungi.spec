@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        2.0.21
-Release:        1%{?dist}
+Release:        1.el6.R
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -56,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Mar 26 2011 Arkady L. Shane <ashejn@russianfedora.ru> - 2.0.21-1.el6.R
+- build for EL6
+
 * Wed Apr 14 2010 Jesse Keating <jkeating@redhat.com> - 2.0.21-1
 - Grab all kernels
 - Note the type of checksum we use
