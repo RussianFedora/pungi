@@ -1,0 +1,56 @@
+diff -urN pungi-2.5.orig/src/bin/pungi.py pungi-2.5/src/bin/pungi.py
+--- pungi-2.5.orig/src/bin/pungi.py	2011-05-20 16:46:29.364866595 +0400
++++ pungi-2.5/src/bin/pungi.py	2011-05-20 16:48:02.307554194 +0400
+@@ -77,6 +77,8 @@
+     # Set debuginfo flag
+     if opts.nodebuginfo:
+         config.set('pungi', 'debuginfo', "False")
++    if opts.isfinal:
++        config.set('pungi', 'isfinal', "True")
+ 
+     # Actually do work.
+     mypungi = pypungi.Pungi(config, ksparser)
+@@ -182,6 +184,8 @@
+           help='Create the source isos (other arch runs must be done)')
+         parser.add_option("--force", default=False, action="store_true",
+           help='Force reuse of an existing destination directory (will overwrite files)')
++        parser.add_option("--isfinal", default=False, action="store_true",     
++          help='Specify this is a GA tree, which causes betanag to be turned off during install')
+ 
+         parser.add_option("-c", "--config", dest="config",
+           help='Path to kickstart config file')
+diff -urN pungi-2.5.orig/src/pypungi/config.py pungi-2.5/src/pypungi/config.py
+--- pungi-2.5.orig/src/pypungi/config.py	2011-05-20 16:46:29.363866577 +0400
++++ pungi-2.5/src/pypungi/config.py	2011-05-20 16:49:46.733449899 +0400
+@@ -42,4 +42,5 @@
+         self.set('pungi', 'bugurl', 'https://bugzilla.redhat.com')
+         self.set('pungi', 'cdsize', '695.0')
+         self.set('pungi', 'debuginfo', "True")
++        self.set('pungi', 'isfinal', "False")
+ 
+diff -urN pungi-2.5.orig/src/pypungi/__init__.py pungi-2.5/src/pypungi/__init__.py
+--- pungi-2.5.orig/src/pypungi/__init__.py	2011-05-20 16:46:29.361866541 +0400
++++ pungi-2.5/src/pypungi/__init__.py	2011-05-20 16:49:09.908781440 +0400
+@@ -778,6 +778,13 @@
+ 
+         variant = self.config.get('pungi', 'flavor')
+         bugurl = self.config.get('pungi', 'bugurl')
++        isfinal = self.config.get('pungi', 'isfinal')
++        # I want to pass in if the release is a final/GA release or not but lorax takes in if its a beta or not
++        # so set isbeta to be the oposite of isfinal
++        if isfinal:
++            isbeta = "False"
++        else:
++            isbeta = "True"
+ 
+         workdir = self.workdir
+         outputdir = self.topdir
+@@ -789,7 +796,7 @@
+ 
+         # FIXME get the actual is_beta value
+         lorax.run(yb, product=product, version=version, release=release,
+-                  variant=variant, bugurl=bugurl, is_beta=True,
++                  variant=variant, bugurl=bugurl, is_beta=isbeta,
+                   workdir=workdir, outputdir=outputdir)
+ 
+         # write out the tree data for snake

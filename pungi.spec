@@ -1,16 +1,18 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        2.4
-Release:        1%{?dist}
+Version:        2.5
+Release:        2%{?dist}.1.R
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
 License:        GPLv2
 URL:            https://fedorahosted.org/pungi
-Source0:        https://fedorahosted.org/pungi/attachment/wiki/%{version}/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.bz2
+Patch0:		pungi-2.5-rhbz703815.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       anaconda >= 14.3, yum => 3.2.19, repoview, createrepo >= 0.4.11
+Requires:       lorax
 BuildRequires:  python-devel
 
 BuildArch:      noarch
@@ -21,6 +23,7 @@ A tool to create anaconda based installation trees/isos of a set of rpms.
 
 %prep
 %setup -q
+%patch0 -p1
 
 
 %build
@@ -55,6 +58,15 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri May 20 2011 Arkady L. Shane <ashejn@russianfedora.ru> - 2.5-2.1.R
+- resolve rhbz#703815
+
+* Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+* Wed Jan 12 2011 Jesse Keating <jkeating@redhat.com> - 2.5-1
+- Use Lorax instead of buildinstall (mgracik)
+
 * Tue Dec 21 2010 Jesse Keating <jkeating@redhat.com> - 2.4-1
 - Enable EFI booting on x86_64 media
 
