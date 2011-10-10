@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           pungi
-Version:        2.0.21
+Version:        2.0.22
 Release:        1.el6.R
 Summary:        Distribution compose tool
 
@@ -10,7 +10,7 @@ License:        GPLv2
 URL:            https://fedorahosted.org/pungi
 Source0:        https://fedorahosted.org/pungi/attachment/wiki/%{version}/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires:       anaconda-runtime >= 11.4.1.5, yum => 3.2.19, repoview, createrepo >= 0.4.11
+Requires:       anaconda-runtime >= 11.4.1.5, yum => 3.2.29, repoview, createrepo >= 0.4.11
 BuildRequires:  python-devel
 
 BuildArch:      noarch
@@ -56,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Oct 10 2011 Arkady L. Shane <ashejn@russianfedora.ru> - 2.0.22-1.el6.R
+- update to 2.0.22
+
 * Sat Mar 26 2011 Arkady L. Shane <ashejn@russianfedora.ru> - 2.0.21-1.el6.R
 - build for EL6
 
